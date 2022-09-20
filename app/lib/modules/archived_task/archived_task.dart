@@ -1,14 +1,26 @@
+import 'package:app/cubit/cubit.dart';
+import 'package:app/cubit/states.dart';
+import 'package:app/shared/components/components.dart';
+import 'package:app/shared/components/constents.dart';
+import 'package:conditional_builder/conditional_builder.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ArchivedTask extends StatelessWidget {
-  // const ArchivedTask({Key? key}) : super(key: key);
+  // const NewTask({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text("Archived Task "),
+    // var tasks = AppCubit.get(context).archivetasks;
+
+    return BlocConsumer<AppCubit, AppStates>(
+      listener: (context, state) {},
+      builder: (context, state) {
+        return conditinalBuilderarch(tasks: AppCubit.get(context).archivetasks);
+      },
     );
   }
 }

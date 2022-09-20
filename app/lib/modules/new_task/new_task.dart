@@ -1,22 +1,26 @@
+import 'package:app/cubit/cubit.dart';
+import 'package:app/cubit/states.dart';
 import 'package:app/shared/components/components.dart';
 import 'package:app/shared/components/constents.dart';
+import 'package:conditional_builder/conditional_builder.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class NewTask extends StatelessWidget {
   // const NewTask({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return ListView.separated(
-        itemBuilder: (context, index) => buildTaskIcon(tasks[index]),
-        separatorBuilder: ((context, index) => Container(
-              height: 1.0,
-              width: double.infinity,
-              color: Colors.grey[300],
-            )),
-        itemCount: tasks.length);
+    // var tasks = AppCubit.get(context).newtasks;
+
+    return BlocConsumer<AppCubit, AppStates>(
+      listener: (context, state) {},
+      builder: (context, state) {
+        return conditinalBuilder(tasks: AppCubit.get(context).newtasks);
+      },
+    );
   }
 }
